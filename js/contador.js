@@ -1,5 +1,7 @@
 function inicializar(){
     localStorage.setItem('contador', 0);
+    window.location.href = 'inicio.html';
+
 }
 
 function check(){
