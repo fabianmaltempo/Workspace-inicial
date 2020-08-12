@@ -5,7 +5,7 @@ function inicializar(){
 }
 
 function check(){
-    contador = localStorage.getItem('contador');
+    var contador = localStorage.getItem('contador');
     if (contador == 0)
         window.location.href = 'login.html';
 }
