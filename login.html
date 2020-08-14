@@ -36,6 +36,16 @@
     }
   </style>
   <script src="js/contador.js"></script>
+  <meta name="google-signin-client_id" content="184454914396-9m5al5pgoio3nrqabu17ihdpme4c5m8o.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script>
+      function onSignIn(googleUser) {
+        // get user profile information
+        console.log(googleUser.getBasicProfile());
+        login();
+        window.location.href="inicio.html";
+      }
+    </script>
 </head>
 
 <body class="text-center">
@@ -56,6 +66,9 @@
       
     </form>
   </div>
+
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
   <script src="js/init.js"></script>
   <script src="js/login.js"></script>
   
