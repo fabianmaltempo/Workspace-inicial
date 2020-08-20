@@ -12,7 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    <script src="js/contador.js"></script>
+    <script src="js/head.js"></script>
     <script>check();</script>
     
     <!-- <meta name="google-signin-client_id" content="184454914396-9m5al5pgoio3nrqabu17ihdpme4c5m8o.apps.googleusercontent.com">
@@ -25,16 +25,8 @@
     </script>-->
   </head>
   <body>
-    <nav class="site-header sticky-top py-1 bg-dark">
-      <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <button class="py-2 d-none d-md-inline-block" onclick="cerrar();">Cerrar sesión</button>
-        <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
-      </div>
+    <nav class="site-header sticky-top py-1 bg-dark" id="header">
+        <script>nav();</script>
     </nav>
     <main role="main">
       <section class="jumbotron text-center">
