@@ -1,13 +1,13 @@
 const ORDER_ASC_BY_NAME = "AZ";
 const ORDER_DESC_BY_NAME = "ZA";
 const ORDER_BY_PROD_COUNT = "Cant.";
-var currentCategoriesArray = [];
+var currentProductsArray = [];
 var currentSortCriteria = undefined;
 var minCount = undefined;
 var maxCount = undefined;
 var texto = undefined;
 
-function sortCategories(criteria, array){
+function sortProducts(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
     {
@@ -36,35 +36,35 @@ function sortCategories(criteria, array){
     return result;
 }
 
-var categoriesArray = [];
+var productsArray = [];
 
 function showCategoriesList(){
 
     let htmlContentToAppend = "";
-    for(let i = 0; i < currentCategoriesArray.length; i++){
-        let category = currentCategoriesArray[i];
-        let nombreProd = category.name.toLowerCase();
-        let descProd = category.description.toLowerCase();
+    for(let i = 0; i < currentProductsArray.length; i++){
+        let product = currentProductsArray[i];
+        let nombreProd = product.name.toLowerCase();
+        let descProd = product.description.toLowerCase();
         
 
-        if (((minCount == undefined) || (minCount != undefined && parseInt(category.cost) >= minCount)) &&
-            ((maxCount == undefined) || (maxCount != undefined && parseInt(category.cost) <= maxCount)) &&
+        if (((minCount == undefined) || (minCount != undefined && parseInt(product.cost) >= minCount)) &&
+            ((maxCount == undefined) || (maxCount != undefined && parseInt(product.cost) <= maxCount)) &&
             ((descProd.indexOf(texto) !== -1) || (nombreProd.indexOf(texto) !== -1) || (texto == undefined))){
 
             htmlContentToAppend += `
             <div class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
-                        <img src="` + category.imgSrc + `" alt="` + category.desc + `" class="img-thumbnail">
+                        <img src="` + product.imgSrc + `" alt="` + product.desc + `" class="img-thumbnail">
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ category.name +`</h4>
-                            <small class="text-muted">` + category.soldCount + ` artículos</small>
+                            <h4 class="mb-1">`+ product.name +`</h4>
+                            <small class="text-muted">` + product.soldCount + ` artículos</small>
                         </div>
-                        <div><p>` + category.description +  `</p></div>
+                        <div><p>` + product.description +  `</p></div>
                         <br><br><br>
-                        <div><p align="right">` + category.currency + category.cost + `</p></div>
+                        <div><p align="right">` + product.currency + product.cost + `</p></div>
 
 
                     </div>
@@ -79,14 +79,14 @@ function showCategoriesList(){
     }
 }
 
-function sortAndShowCategories(sortCriteria, categoriesArray){
+function sortAndShowCategories(sortCriteria, productsArray){
     currentSortCriteria = sortCriteria;
 
-    if(categoriesArray != undefined){
-        currentCategoriesArray = categoriesArray;
+    if(productsArray != undefined){
+        currentProductsArray = productsArray;
     }
 
-    currentCategoriesArray = sortCategories(currentSortCriteria, currentCategoriesArray);
+    currentProductsArray = sortProducts(currentSortCriteria, currentProductsArray);
 
     //Muestro las categorías ordenadas
     showCategoriesList();
