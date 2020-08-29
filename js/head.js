@@ -1,23 +1,23 @@
 function inicializar(){
     if (localStorage.getItem('contador') == null){
         localStorage.setItem('contador', 0);
-        
+            
     }
-    window.location.href = 'inicio.html';
-    
+    if (localStorage.getItem('DataLogin') == null){
+        var DataLogin = [];
+        localStorage.setItem("DataLogin", JSON.stringify(DataLogin));
+    }
 
 }
 
 function check(){
     var contador = localStorage.getItem('contador');
-    if (contador == 0)
+    if (contador == 0){
         window.location.href = 'login.html';
+    }
 }
 
-function login(){
-    localStorage.setItem('contador', 1);
-    localStorage.setItem('usuario', document.getElementById("inputEmail").value);
-}
+
 
 function cerrar(){
     localStorage.setItem('contador',0);
@@ -43,3 +43,4 @@ function nav(){
     
     document.getElementById("header").innerHTML = htmlContentToAppend;
 }
+
