@@ -1,13 +1,11 @@
-function inicializar(){
-    if (localStorage.getItem('contador') == null){
-        localStorage.setItem('contador', 0);
-            
-    }
-    if (localStorage.getItem('DataLogin') == null){
-        var DataLogin = [];
-        localStorage.setItem("DataLogin", JSON.stringify(DataLogin));
-    }
-
+if (localStorage.getItem('contador') == null){
+    localStorage.setItem('contador', 0);
+    window.location.href = "login.html";    
+}
+if (localStorage.getItem('DataLogin') == null){
+    var DataLogin = [];
+    localStorage.setItem("DataLogin", JSON.stringify(DataLogin));
+    window.location.href = "login.html";  
 }
 
 function check(){

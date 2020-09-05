@@ -52,7 +52,7 @@ function showCategoriesList(){
             ((descProd.indexOf(texto) !== -1) || (nombreProd.indexOf(texto) !== -1) || (texto == undefined))){
 
             htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action">
+            <a href="product-info.html" class="list-group-item list-group-item-action">
                 <div class="row">
                     <div class="col-3">
                         <img src="` + product.imgSrc + `" alt="` + product.desc + `" class="img-thumbnail">
@@ -69,7 +69,7 @@ function showCategoriesList(){
 
                     </div>
                 </div>
-            </div>
+            </a>
             `
 
 
