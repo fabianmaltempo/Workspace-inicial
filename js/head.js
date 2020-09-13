@@ -7,6 +7,10 @@ if (localStorage.getItem('DataLogin') == null){
     localStorage.setItem("DataLogin", JSON.stringify(DataLogin));
     window.location.href = "login.html";  
 }
+if (localStorage.getItem('comentarios') == null){
+    var comentarios = [];
+    localStorage.setItem("comentarios", JSON.stringify(comentarios));
+}
 
 function check(){
     var contador = localStorage.getItem('contador');
@@ -31,7 +35,7 @@ function nav(){
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
         <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
         <p class="py-2 d-none d-md-inline-block">` + localStorage.getItem('usuario') + `</p>
-        <button class="py-2 d-none d-md-inline-block" onclick="cerrar();">Cerrar sesión</button>
+        <button class="btn btn-primary" onclick="cerrar();">Cerrar sesión</button>
         <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
     </div>
     `

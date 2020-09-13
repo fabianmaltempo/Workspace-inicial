@@ -83,6 +83,63 @@ function showComments(array){
 
         document.getElementById("comentarios").innerHTML = htmlContentToAppend;
     }
+
+    var lista = JSON.parse(localStorage.getItem('comentarios'));
+    for(let i = 0; i < lista.length; i++){
+
+        htmlContentToAppend += `
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>.checked {
+            color: orange;
+          }
+        </style>
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="d-block mb-4 h-100">`;
+
+        //mostrar estrellas
+        for (let j = 0; j < lista[i].score; j++){
+            htmlContentToAppend += `<span class="fa fa-star checked"></span>`;
+        }
+        for (let j=0; j < 5-lista[i].score; j++){
+            htmlContentToAppend += `<span class="fa fa-star"></span>`;
+        } 
+
+        //mostrar descripcion
+        htmlContentToAppend += `<br>` + lista[i].description;
+
+        //mostrar usuario
+        htmlContentToAppend += `<br>` + lista[i].user;
+
+        //mostrar fecha
+        htmlContentToAppend += `<br>` + lista[i].dateTime;
+
+        //cerrar
+        htmlContentToAppend += `
+            </div>
+        </div>
+        `;
+
+        document.getElementById("comentarios").innerHTML = htmlContentToAppend;
+    }
+}
+
+function submitComment(){
+    var radios = document.getElementsByName('agregarComentarioScore');
+    var Puntuacion = 0;
+    for (var i = 0, length = radios.length; i < length; i++) {
+        if (radios[i].checked) {
+            Puntuacion = (i+1);
+            break;
+        }
+    }   
+    var Comentario = document.getElementById("agregarComentarioCom").value;
+    var Fecha = new Date().toISOString();
+    var usuario = localStorage.getItem('usuario');
+
+    var lista = JSON.parse(localStorage.getItem('comentarios'));
+    var fullComent = {score: Puntuacion, description: Comentario, user: usuario, dateTime: Fecha};
+    lista.push(fullComent);
+    localStorage.setItem('comentarios', JSON.stringify(lista));
 }
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
@@ -127,7 +184,6 @@ document.addEventListener("DOMContentLoaded", function(e){
                 {
                     comments = resultProd.data;
                     showComments(comments);
-
                 }
             });
         }

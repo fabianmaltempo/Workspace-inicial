@@ -66,6 +66,27 @@
           <div class="row text-center text-lg-left pt-2" id="comentarios">
           </div>
         </dd>
+
+        <dt>Agregar Comentario</dt>
+        <dd>
+          <div class="row text-center text-lg-left pt-2 card" style="width: 20rem;" id="agregarComentario">
+            <form onsubmit="submitComment();">
+              <div class="form-check">
+                <label class="form-check-label" for="agregarComentarioScore">Puntuación:</label><br>
+                <input type="radio" id="agregarComentarioScore1" name="agregarComentarioScore" value="agregarComentarioScore1">
+                <input type="radio" id="agregarComentarioScore2" name="agregarComentarioScore" value="agregarComentarioScore2">
+                <input type="radio" id="agregarComentarioScore3" name="agregarComentarioScore" value="agregarComentarioScore3">
+                <input type="radio" id="agregarComentarioScore4" name="agregarComentarioScore" value="agregarComentarioScore4">
+                <input type="radio" id="agregarComentarioScore5" name="agregarComentarioScore" value="agregarComentarioScore5">
+              </div>
+              <div class="form-group">
+                <label for="agregarComentarioCom">Comentario:</label><br>
+                <input type="text" class="form-control" id="agregarComentarioCom" name="agregarComentarioCom"><br>
+              </div>
+              <input class="btn btn-primary" type="submit" value="Enviar">
+            </form>
+          </div>
+        </dd>
       </dl>
       <a type="button" class="btn btn-light btn-lg btn-block" href="products.html">Ver productos</a>
     </div>
