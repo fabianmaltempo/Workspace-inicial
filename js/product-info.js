@@ -26,20 +26,37 @@ function showRelatedProducts(array)
 function showImagesGallery(array){
 
     let htmlContentToAppend = "";
+    htmlContentToAppend += `
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="` + array[0] + `" class="d-block w-100" alt="20">
+            </div>`;
+    
+            
 
-    for(let i = 0; i < array.length; i++){
+        
+
+    for(let i = 1; i < array.length; i++){
         let imageSrc = array[i];
 
         htmlContentToAppend += `
-        <div class="col-lg-3 col-md-4 col-6">
-            <div class="d-block mb-4 h-100">
-                <img class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
+            <div class="carousel-item">
+                <img src="` + imageSrc + `" class="d-block w-100 alt="20"">
             </div>
-        </div>
-        `
-
-        document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
+        `;        
     }
+    htmlContentToAppend += `
+        </div>
+        <a class="carousel-control-prev" href="#productImagesGallery" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#productImagesGallery" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    `;
+    document.getElementById("productImagesGallery").innerHTML = htmlContentToAppend;
 }
 
 
@@ -48,7 +65,7 @@ function showComments(array){
 
     
     for(let i = 0; i < array.length; i++){
-
+        
         htmlContentToAppend += `
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>.checked {

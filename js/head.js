@@ -33,15 +33,18 @@ function nav(){
         <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
         <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
         <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-        <p class="py-2 d-none d-md-inline-block">` + localStorage.getItem('usuario') + `</p>
-        <button class="btn btn-primary" onclick="cerrar();">Cerrar sesión</button>
-        <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                ` + localStorage.getItem('usuario') + `
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" id="NavMiCarrito" href="cart.html">Mi Carrito</a>
+                <a class="dropdown-item" id="NavMiPerfil" href="my-profile.html">Mi Perfil</a>
+                <a class="dropdown-item" id="NavCerrarSesion" href="#" onClick="cerrar()">Cerrar Sesión</a>
+            </div>
+        </div>
     </div>
-    `
-
-
-        
+    `   
     
     document.getElementById("header").innerHTML = htmlContentToAppend;
 }
