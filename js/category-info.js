@@ -1,4 +1,4 @@
-var category = {};
+var cartInfo = {};
 
 function showImagesGallery(array){
 
@@ -26,20 +26,20 @@ document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORY_INFO_URL).then(function(resultObj){
         if (resultObj.status === "ok")
         {
-            category = resultObj.data;
+            cartInfo = resultObj.data;
 
             let categoryNameHTML  = document.getElementById("categoryName");
             let categoryDescriptionHTML = document.getElementById("categoryDescription");
             let productCountHTML = document.getElementById("productCount");
             let productCriteriaHTML = document.getElementById("productCriteria");
         
-            categoryNameHTML.innerHTML = category.name;
-            categoryDescriptionHTML.innerHTML = category.description;
-            productCountHTML.innerHTML = category.productCount;
-            productCriteriaHTML.innerHTML = category.productCriteria;
+            categoryNameHTML.innerHTML = cartInfo.name;
+            categoryDescriptionHTML.innerHTML = cartInfo.description;
+            productCountHTML.innerHTML = cartInfo.productCount;
+            productCriteriaHTML.innerHTML = cartInfo.productCriteria;
 
             //Muestro las imagenes en forma de galería
-            showImagesGallery(category.images);
+            showImagesGallery(cartInfo.images);
         }
     });
 });

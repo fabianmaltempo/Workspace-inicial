@@ -33,18 +33,94 @@
   <link href="css/dropzone.css" rel="stylesheet">
   <script src="js/head.js"></script>
   </head>
+
   <body>
     <nav class="site-header sticky-top py-1 bg-dark" id="header">
       <script>nav();</script>
     </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 5 (Fecha de entrega: 11/10/2020) y Entrega 6 (Fecha de entrega: 25/10/2020).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
-    </div>
+    <table class="table" id="articlesTable">
+      <thead>
+      <tr>
+      <th scope="col"></th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Costo</th>
+      <th scope="col">Moneda</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Subtotal</th>
+      </tr>
+      </thead>
+      
+     <tbody id="articlesWrapper">
+      </tbody>
+     </table>
   </div>
+  <div class="container p-5">
+  <form>
+    <dl>
+      <dt>Tipo de envío</dt>
+      <dd>
+        <div class="d-block my-3">
+          <div class="custom-control custom-radio">
+          <input id="premiumradio" name="publicationType" type="radio" checked="" required="" onchange="costoTotal()">
+          <label class="custom-controllabel" for="premiumradio">Premium 2 a 5 días (15%)</label>
+          </div>
+         
+         <div class="custom-control custom-radio">
+          <input id="expressradio" name="publicationType" type="radio" required="" onchange="costoTotal()">
+          <label class="custom-controllabel" for="expressradio">Express 5 a 8 días (7%)</label>
+          </div>
+         
+         <div class="custom-control custom-radio">
+          <input id="standardradio" name="publicationType" type="radio" required="" onchange="costoTotal()">
+          <label class="custom-controllabel" for="standardradio">Standard 12 a 15 días (5%)</label>
+          </div>
+         </div>
+      </dd>
+
+      <dt>Dirección de envío</dt>
+      <dd>
+        <label for="DECalle">Calle: </label>
+        <input type="text" id="DECalle" required="" autofocus="">  
+        <label for="DENumero">Numero: </label>
+        <input type="text" id="DENumero" required="" autofocus=""><br>
+        <label for="DEEsquina">Esquina: </label>
+        <input type="text" id="DEEsquina" required="" autofocus="">    
+      </dd>
+      <br>
+      <dt>Costos</dt>
+      <dd>
+        <table class="table">
+          <tr>
+            <td>Subtotal</td>
+            <td id="subTotalCostos"></td>
+          </tr>
+          <tr>
+            <td>Costo de Envío</td>
+            <td id="costoEnvioCostos"></td>
+          </tr>
+          <tr>
+            <td><span style="font-weight:bold;">Total</span></td>
+            <td id="totalCostos"></td>
+          </tr>
+        </table>
+      </dd>
+      
+
+      <dt>Forma de pago</dt>
+      <dd>
+          <select name="formaPago" id="formaPago">
+            <option value="Efectivo">Efectivo</option>
+            <option value="Debito">Débito</option>
+            <option value="Credito">Crédito</option>
+          </select>
+      </dd>
+    </dl>
+    <input type="submit" value="Finalizar compra">
+    
+  </form>
+</div>
+
   <div id="spinner-wrapper">
     <div class="lds-ring">
       <div></div>
