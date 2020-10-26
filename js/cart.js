@@ -1,4 +1,48 @@
 const CART_DESAFIATE = "https://japdevdep.github.io/ecommerce-api/cart/654.json";
+const formaPagoEfectivoHTML = "";
+const formaPagoDebitoHTML = `
+    <table class="table">
+        <tbody>
+            <tr>
+                <td style="border:none;"><label for="NroCuentaDeb">Numero de cuenta:</label></td>
+                <td style="border:none;"><label for="CodigoSegDeb">Codigo de seguridad:</label></td>
+            </tr>
+            <tr>
+                <td style="border:none;"><input type="text" id="NroCuentaDeb" required="" autofocus=""></td>
+                <td style="border:none;"><input type="text" id="CodigoSegDeb" required="" autofocus=""></td>
+            </tr>
+            <tr>
+                <td style="border:none;"><label for="VencimientoDeb">Vencimiento (MM/AA):</label></td>
+            </tr>
+            <tr>
+                <td style="border:none;"><input type="text" id="VencimientoDeb" required="" autofocus=""></td>
+            </tr>
+        </tbody>
+    </table>
+`;
+const formaPagoCreditoHTML = `
+    <table class="table">
+        <tbody>
+            <tr>
+                <td style="border:none;"><label for="NroCuentaCred">Numero de cuenta:</label></td>
+                <td style="border:none;"><label for="CodigoSegCred">Codigo de seguridad:</label></td>
+            </tr>
+            <tr>
+                <td style="border:none;"><input type="text" id="NroCuentaCred" required="" autofocus=""></td>
+                <td style="border:none;"><input type="text" id="CodigoSegCred" required="" autofocus=""></td>
+            </tr>
+            <tr>
+                <td style="border:none;"><label for="VencimientoCred">Vencimiento (MM/AA):</label></td>
+            </tr>
+            <tr>
+                <td style="border:none;"><input type="text" id="VencimientoCred" required="" autofocus=""></td>
+            </tr>
+        </tbody>
+    </table>
+`;
+
+_articulos = [];
+
 
 function showArticles(articleArray){
     let htmlContentToAppend = "";
@@ -10,12 +54,10 @@ function showArticles(articleArray){
             <td scope="col">` + articleArray[i].unitCost + `</td>
             <td scope="col">` + articleArray[i].currency + `</td>
             <td scope="col"><input onchange="
-                changeSubtotal(this.value,` + articleArray[i].unitCost + `,'` + articleArray[i].currency + `',` + (i+1) + ` )"
-
-
-
-            type="number" class="cartCantidad" name="quantity" value="` + articleArray[i].count + `" min="1"></td>
+                changeSubtotal(this.value,` + articleArray[i].unitCost + `,'` + articleArray[i].currency + `',` + (i+1) + ` )
+            " type="number" class="cartCantidad" name="quantity" value="` + articleArray[i].count + `" min="1"></td>
             <td scope="col"><span style="font-weight:bold;">` + articleArray[i].unitCost * articleArray[i].count + articleArray[i].currency + `</span></td>
+            <td scope="col"><button type="button" class="button" onclick="eliminarArticulo(` + i + `)">><</button></td>
         </tr>
         `
         
@@ -39,7 +81,7 @@ function costoTotal(){
     for (let i=1;i < table.rows.length; i++){//sumo el subtotal de cada artículo en el carrito
         let costo = table.rows[i].cells[2].innerHTML;
         let cantidad = cantidades[i-1].value;
-        let moneda = table.rows[i].cells[3].innerHTML
+        let moneda = table.rows[i].cells[3].innerHTML;
         if (moneda == "UYU")
             subTotal += costo * cantidad;
         else
@@ -64,6 +106,37 @@ function costoTotal(){
     
 }
 
+function showFormaPago(){
+    formaPago = document.getElementById("formaPagoHTML");
+    btnFormaPago = document.getElementById("btnFormaPago")
+    option = document.getElementById("formaPago").value;
+    if (option == "Efectivo"){
+        formaPago.innerHTML = formaPagoEfectivoHTML;
+        btnFormaPago.innerHTML = "Efectivo";
+    }
+        
+    if (option == "Debito"){
+        formaPago.innerHTML = formaPagoDebitoHTML;
+        btnFormaPago.innerHTML = "Debito";
+    }
+        
+    if (option == "Credito"){
+        formaPago.innerHTML = formaPagoCreditoHTML;
+        btnFormaPago.innerHTML = "Credito";
+    }
+        
+}
+
+document.getElementById("formaPago").addEventListener("change",function(){
+    showFormaPago();
+});
+
+function eliminarArticulo(id){
+    _articulos.splice(id,1);
+    showArticles(_articulos);
+    costoTotal();
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -72,13 +145,13 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok")
         {
             cartInfo = resultObj.data;
-
+            _articulos = cartInfo.articles;
             //Muestro articulos
-            showArticles(cartInfo.articles);
+            showArticles(_articulos);
 
             costoTotal();
 
-            
+            showFormaPago();
         }
     });
 

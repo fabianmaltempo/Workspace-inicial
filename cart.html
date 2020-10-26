@@ -109,11 +109,33 @@
 
       <dt>Forma de pago</dt>
       <dd>
-          <select name="formaPago" id="formaPago">
-            <option value="Efectivo">Efectivo</option>
-            <option value="Debito">Débito</option>
-            <option value="Credito">Crédito</option>
-          </select>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" id="btnFormaPago">
+          Efectivo
+        </button>
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Forma de pago</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <select name="formaPago" id="formaPago">
+                  <option value="Efectivo">Efectivo</option>
+                  <option value="Debito">Débito</option>
+                  <option value="Credito">Crédito</option>
+                </select>
+                <div id="formaPagoHTML"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Aceptar</button>
+              </div>
+            </div>
+          </div>
+        </div> 
       </dd>
     </dl>
     <input type="submit" value="Finalizar compra">
