@@ -28,22 +28,33 @@ function cerrar(){
 
 function nav(){
     htmlContentToAppend = `
-    <div class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
-        <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
-        <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
-        <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                ` + localStorage.getItem('usuario') + `
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" id="NavMiCarrito" href="cart.html">Mi Carrito</a>
-                <a class="dropdown-item" id="NavMiPerfil" href="my-profile.html">Mi Perfil</a>
-                <a class="dropdown-item" id="NavCerrarSesion" href="#" onClick="cerrar()">Cerrar Sesión</a>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <a class="py-2 d-none d-md-inline-block" href="inicio.html">Inicio</a>
+            </div>
+            <div class="col-sm">
+                <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
+            </div>
+            <div class="col-sm">
+                <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
+            </div>
+            <div class="col-sm">
+                <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
+            </div>
+            <div class="col-sm">
+                <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            ` + localStorage.getItem('usuario') + `
+                        </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" id="NavMiCarrito" href="cart.html">Mi Carrito</a>
+                        <a class="dropdown-item" id="NavMiPerfil" href="my-profile.html">Mi Perfil</a>
+                        <a class="dropdown-item" id="NavCerrarSesion" href="#" onClick="cerrar()">Cerrar Sesión</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
     `   
     
     document.getElementById("header").innerHTML = htmlContentToAppend;

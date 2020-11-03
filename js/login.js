@@ -19,7 +19,7 @@ function login(){
         }
     }
     if (!bandera){
-        var persona = {correo: correoP, password: passP};
+        var persona = {correo: correoP, password: passP, nombres: "", apellidos: "", edad: "", telefono: ""};
         DataLogin.push(persona);
         localStorage.setItem('contador', 1);
         localStorage.setItem('usuario', correoP)

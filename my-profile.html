@@ -5,7 +5,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <title>eMercado - Todo lo que busques está aquí</title>
 
@@ -38,12 +38,52 @@
       <script>nav();</script>
     </nav>
   <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 7 (Fecha de entrega: 8/11/202020) -> Punto 1 y 2.</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+    <div>
+      <p id="mpNombre">Nombres: </p>
+      <p id="mpApellido">Apellidos: </p>
+      <p id="mpEdad">Edad: </p>
+      <p id="mpEmail">Email: </p>
+      <p id="mpTelefono">Telefono de contacto: </p>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop" id="mpEditar">
+        Editar
+      </button>
     </div>
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Editar datos personales</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form id="mpForm">
+            <div class="modal-body">
+            
+              <label for="eNombre">Nombres: </label>
+              <input type="text" id="eNombre" placeholder="">
+              <br>
+              <label for="eApellido">Apellidos: </label>
+              <input type="text" id="eApellido" placeholder="">
+              <br>
+              <label for="eEdad">Edad: </label>
+              <input type="number" id="eEdad" placeholder="">
+              <br>
+              <label for="eEmail">Email: </label>
+              <input type="email" id="eEmail" placeholder="" required="">
+              <br>
+              <label for="eTelefono">Telefono: </label>
+              <input type="number" id="eTelefono" placeholder="">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <input type="submit" value="Guardar" class="btn btn-primary" id="eGuardar">
+            </div>
+          </form>
+            
+        </div>
+      </div>
+    </div> 
   </div>
   <footer class="text-muted bg-light">
     <div class="container">
