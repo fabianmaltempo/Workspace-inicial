@@ -5,19 +5,20 @@ document.addEventListener("DOMContentLoaded", function (e) {
     showProfile();
 });
 
-function showProfile(){
-    mpNombre = document.getElementById("mpNombre");
-    eNombre = document.getElementById("eNombre");
-    mpApellido = document.getElementById("mpApellido");
-    eApellido = document.getElementById("eApellido");
-    mpEdad = document.getElementById("mpEdad");
-    eEdad = document.getElementById("eEdad");
-    mpEmail = document.getElementById("mpEmail");
-    eEmail = document.getElementById("eEmail");
-    mpTelefono = document.getElementById("mpTelefono");
-    eTelefono = document.getElementById("eTelefono");
+mpNombre = document.getElementById("mpNombre");
+eNombre = document.getElementById("eNombre");
+mpApellido = document.getElementById("mpApellido");
+eApellido = document.getElementById("eApellido");
+mpEdad = document.getElementById("mpEdad");
+eEdad = document.getElementById("eEdad");
+mpEmail = document.getElementById("mpEmail");
+eEmail = document.getElementById("eEmail");
+mpTelefono = document.getElementById("mpTelefono");
+eTelefono = document.getElementById("eTelefono");
+mpImagen = document.getElementById("mpImagen");
 
-    var DataLogin = JSON.parse(localStorage.getItem('DataLogin'));
+function showProfile(){
+    var DataLogin = JSON.parse(localStorage.getItem('DataLogin'));//Miro la lista que se crea en login
 
     DataLogin.forEach(write);
 
@@ -37,9 +38,10 @@ function showProfile(){
             eEmail.value += p.correo;
             mpTelefono.innerHTML += p.telefono;
             eTelefono.value += p.telefono;
+            mpImagen.innerHTML = p.img;
         }
         
-    }
+    }//Escribo todo en los lugares que quiero de mi html
     
 }
 

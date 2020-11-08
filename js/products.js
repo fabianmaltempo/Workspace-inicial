@@ -52,24 +52,23 @@ function showCategoriesList(){
             ((descProd.indexOf(texto) !== -1) || (nombreProd.indexOf(texto) !== -1) || (texto == undefined))){
 
             htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action">
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + product.imgSrc + `" alt="` + product.desc + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ product.name +`</h4>
-                            <small class="text-muted">` + product.soldCount + ` artículos</small>
+            
+                <div class="col-md-4">
+                    <a href="product-info.html" class="list-group-item-action card mb-4 shadow-sm ">
+                        <div class="card-img-top">
+                            <img src="` + product.imgSrc + `" alt="` + product.desc + `" class="img-thumbnail">
                         </div>
-                        <div><p>` + product.description +  `</p></div>
-                        <br><br><br>
-                        <div><p align="right">` + product.currency + product.cost + `</p></div>
-
-
-                    </div>
+                        <div class="card-body">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h4 class="mb-1">`+ product.name +`</h4>
+                                <small class="text-muted">` + product.soldCount + ` artículos</small>
+                            </div>
+                            <div><p>` + product.description +  `</p></div>
+                            <div><p align="right">` + product.currency + product.cost + `</p></div>
+                        </div>
+                    </a>
                 </div>
-            </a>
+            
             `
 
 

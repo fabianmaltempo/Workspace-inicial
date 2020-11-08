@@ -4,18 +4,18 @@ const formaPagoDebitoHTML = `
     <table class="table">
         <tbody>
             <tr>
-                <td style="border:none;"><label for="NroCuentaDeb">Numero de cuenta:</label></td>
-                <td style="border:none;"><label for="CodigoSegDeb">Codigo de seguridad:</label></td>
+                <td style="border:none;" scope="col"><label for="NroCuentaDeb">Numero de cuenta:</label></td>
+                <td style="border:none;" scope="col"><label for="CodigoSegDeb">Codigo de seguridad:</label></td>
             </tr>
             <tr>
-                <td style="border:none;"><input type="text" id="NroCuentaDeb" required="" autofocus=""></td>
+                <td style="border:none;" scope="row"><input type="text" id="NroCuentaDeb" required="" autofocus=""></td>
                 <td style="border:none;"><input type="text" id="CodigoSegDeb" required="" autofocus=""></td>
             </tr>
             <tr>
-                <td style="border:none;"><label for="VencimientoDeb">Vencimiento (MM/AA):</label></td>
+                <td style="border:none;" scope="row"><label for="VencimientoDeb">Vencimiento (MM/AA):</label></td>
             </tr>
             <tr>
-                <td style="border:none;"><input type="text" id="VencimientoDeb" required="" autofocus=""></td>
+                <td style="border:none;" scope="row"><input type="text" id="VencimientoDeb" required="" autofocus=""></td>
             </tr>
         </tbody>
     </table>
@@ -24,18 +24,18 @@ const formaPagoCreditoHTML = `
     <table class="table">
         <tbody>
             <tr>
-                <td style="border:none;"><label for="NroCuentaCred">Numero de cuenta:</label></td>
-                <td style="border:none;"><label for="CodigoSegCred">Codigo de seguridad:</label></td>
+                <td style="border:none;" scope="col"><label for="NroCuentaCred">Numero de cuenta:</label></td>
+                <td style="border:none;" scope="col"><label for="CodigoSegCred">Codigo de seguridad:</label></td>
             </tr>
             <tr>
-                <td style="border:none;"><input type="text" id="NroCuentaCred" required="" autofocus=""></td>
+                <td style="border:none;" scope="row"><input type="text" id="NroCuentaCred" required="" autofocus=""></td>
                 <td style="border:none;"><input type="text" id="CodigoSegCred" required="" autofocus=""></td>
             </tr>
             <tr>
-                <td style="border:none;"><label for="VencimientoCred">Vencimiento (MM/AA):</label></td>
+                <td style="border:none;" scope="row"><label for="VencimientoCred">Vencimiento (MM/AA):</label></td>
             </tr>
             <tr>
-                <td style="border:none;"><input type="text" id="VencimientoCred" required="" autofocus=""></td>
+                <td style="border:none;" scope="row"><input type="text" id="VencimientoCred" required="" autofocus=""></td>
             </tr>
         </tbody>
     </table>
@@ -49,15 +49,15 @@ function showArticles(articleArray){
     for (let i=0;i < articleArray.length; i++){
         htmlContentToAppend += `
         <tr>
-            <td scope="col"><img class="img-fluid img-thumbnail" src="` + articleArray[i].src + `" width="100" alt=""></td>
-            <td scope="col">` + articleArray[i].name + `</td>
-            <td scope="col">` + articleArray[i].unitCost + `</td>
-            <td scope="col">` + articleArray[i].currency + `</td>
-            <td scope="col"><input onchange="
+            <td scope="row"><img class="img-fluid img-thumbnail" src="` + articleArray[i].src + `" width="100" alt=""></td>
+            <td>` + articleArray[i].name + `</td>
+            <td>` + articleArray[i].unitCost + `</td>
+            <td>` + articleArray[i].currency + `</td>
+            <td><input onchange="
                 changeSubtotal(this.value,` + articleArray[i].unitCost + `,'` + articleArray[i].currency + `',` + (i+1) + ` )
             " type="number" class="cartCantidad" name="quantity" value="` + articleArray[i].count + `" min="1"></td>
-            <td scope="col"><span style="font-weight:bold;">` + articleArray[i].unitCost * articleArray[i].count + articleArray[i].currency + `</span></td>
-            <td scope="col"><button type="button" class="button" onclick="eliminarArticulo(` + i + `)">><</button></td>
+            <td><span style="font-weight:bold;">` + articleArray[i].unitCost * articleArray[i].count + articleArray[i].currency + `</span></td>
+            <td><button type="button" class="button" onclick="eliminarArticulo(` + i + `)">><</button></td>
         </tr>
         `
         
